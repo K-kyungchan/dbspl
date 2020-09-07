@@ -115,6 +115,7 @@ AND hiredate >= TO_DATE ('1981/06/01', 'yyyy/mm/dd');
  
  
  === 과   제 ====
+
  ====11번 문제====
 SELECT *
 FROM emp 
@@ -142,7 +143,7 @@ WHERE job = 'SALESMAN'
 OR empno LIKE '78%'
 AND  hiredate >= TO_DATE ('1981/06/01', 'yyyy/mm/dd')
 
-
+==================
 
 
 
@@ -283,6 +284,17 @@ FROM emp;
 SELECT ROWNUM, e."
 FROM emp  e;
 
+ROWUM : 1부터 읽어야 된다.
+    SELECT 절이 ORDER BY 절보다 먼저 실행된다
+    ==> ROWNUM을 이용하여 순서를 부여 하려면 정렬 부터 해야한다.
+      ==> 인라인뷰 (ORDER BY - ROWNUM을 분리)
+//1문제
+SELECT ROWNUM RN, empno, ename
+FROM emp
+WHERE ROWNUM <= 10;
 
-
-
+//2문제
+SELECT ROWNUM RN, empno, ename
+(SELECT ROWNUM RN, empno, ename)
+FROM emp
+WHERE ROWNUM <=10;
