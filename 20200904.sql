@@ -294,7 +294,25 @@ FROM emp
 WHERE ROWNUM <= 10;
 
 //2문제
-SELECT ROWNUM RN, empno, ename
-(SELECT ROWNUM RN, empno, ename)
-FROM emp
-WHERE ROWNUM <=10;
+SELECT *
+FROM (SELECT ROWNUM rn, empno, ename
+      FROM emp)
+WHERE rn >=11 AND rn <= 20;      
+
+//3문제
+SELECT *
+FROM (SELECT ROWNUM rn, empno, ename
+      FROM emp)
+WHERE rn >=11 AND rn <= 20     
+ORDER BY empno asc;
+//풀이
+ SELELCT *
+ FROM
+     (SELECT ROWNUM rn, empno, ename
+       FROM
+        (SELECT empno, ename
+         FROM emp
+         ORDER BY ename ASC))
+ WHERE rn > 10 AND rn <= 20;
+
+
