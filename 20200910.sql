@@ -142,6 +142,8 @@ GROUP BY deptno
 
 
 
+
+
 *************** WHERE + JOIN SELECT SQL의 모든것 ************** 
 JOIN : 다른 테이블과 연결하며 데이터를 확장하는 문법
        - 컬럼을 확장
