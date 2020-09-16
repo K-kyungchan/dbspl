@@ -81,10 +81,7 @@ FRoM emp
 WHERE sal > (SELECT avg(sal)
              FROM emp)
 ---서브쿼리 실습 2---
-SELECT *
-FROM emp
-WHERE sal > (SELECT avg(sal)
-             FROM emp)
+ 
 
 복수행 연산자 : IN(중요), ANY. ALL (빈도가 떨어짐) 
 ---서브쿼리 실습 3---
@@ -161,3 +158,58 @@ WHERE deptno IN ( SELECT deptno
 SELECT dname
 FROM dept
 WHERE deptno = deptno
+
+
+--실습--
+테스트용 데이터 추가
+DESC dept;
+INSERT INTO dept VALUES (99, 'ddit', 'deajeon');
+
+SELECT *
+FROM dept 
+WHERE deptno NOT IN ( SELECT deptno
+                 FROM emp ) 
+                 WHERE deptno in (10,20,30))
+                
+1.emp 테이블에 등록된 사원들이 속한 부서번호
+SELECT *
+FROM emp
+--5--
+SELECT *
+FROM product 
+WHERE pid NOT IN ( SELECT pid
+                      FROM cycle 
+                    WHERE cid = 1)
+--6--
+SELECT *
+FROM cycle 
+WHERE cid = 1    
+  AND pid  IN (SELECT pid
+                 FROM cycle
+                 WHERE cid = 2)
+                    
+ --서브쿼리 7 숙제 -- 
+
+
+SELECT cycle.cid, customer.cnm, cycle.pid, product.pnm, cycle.day, cycle.cnt
+FROM cycle JOIN customer ON( cycle.cid = customer. cid)
+           JOIN product ON( product.pid = CYCLE.PID)
+WHERE cycle.cid = 1
+  AND cycle.pid IN (SELECT pid
+                    FROM cycle
+                    WHERE cid = 2)
+           
+
+
+
+
+select * 
+from product
+
+SELECT *
+FROM cycle 
+
+SELECT *
+FROM customer
+
+JOIN customer ON( cycle.cid = customer. cid)

@@ -30,6 +30,31 @@ SELECT y.cid, c.cnm, y.pid, y.day, y.cnt
 FROM cycle y JOIN customer c ON ( y.cid = c.cid )
 WHERE c.cnm IN ('brown', 'sally')
 
+SELECT p.pid, p.pnm, y.cid, y.day, y.cnt
+FROM cycle y  JOIN product p ON ( y.pid = p.pid )
+WHERE y.cid = 1;
+
+
+ SELECT p.pid, p.pnm, NVL(c.cid, 1) cid, u.cnm, NVL(c.day, 0)day, NVL(c.cnt, 0)cnt
+  FROM cycle c, product p, customer u
+  WHERE c.pid(+) = p.pid
+  AND c.cid(+) = 1 
+  AND 1 = u.cid
+  ORDER BY p.pid desc;
+
+SELECT p.pid, p.pnm, y.cid, y.day, NVL(y.cnt, 0)
+FROM cycle y, product p  
+WHERE  y.pid(+) = p.pid
+ and y.cid(+) = 1;
+
+------1242314r23fef42-----
+  --실습 5
+  SELECT p.pid, p.pnm, NVL(c.cid, 1) cid, u.cnm, NVL(c.day, 0)day, NVL(c.cnt, 0)cnt
+  FROM cycle c, product p, customer u
+  WHERE c.pid(+) = p.pid
+  AND c.cid(+) = 1 
+  AND 1 = u.cid
+  ORDER BY p.pid desc;
 
 SQL이 읽어온 순서
 EXPLAIN PLAN FOR -- 먼저 입력
@@ -141,14 +166,6 @@ FROM cycle y JOIN customer c ON ( y.cid = c.cid )
              JOIN product p ON ( y.pid = p.pid )
 GROUP BY y.pid, p.pnm
 ORDER BY p.pnm ;
-
-
-
-
-SELECT *
-FROM countries
-
-
 
 
 
