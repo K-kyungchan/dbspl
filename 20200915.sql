@@ -190,7 +190,6 @@ WHERE cid = 1
                     
  --서브쿼리 7 숙제 -- 
 
-
 SELECT cycle.cid, customer.cnm, cycle.pid, product.pnm, cycle.day, cycle.cnt
 FROM cycle JOIN customer ON( cycle.cid = customer. cid)
            JOIN product ON( product.pid = CYCLE.PID)
