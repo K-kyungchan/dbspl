@@ -195,7 +195,6 @@ CREATE TABLE dept_test(
              dname VARCHAR2(14),
              loc VARCHAR2(13)
              );
-
 INSERT INTO dept_test VALUES (90, 'ddit', 'daejeon')
    
 2. enp_test (empno, ename, deptno)
