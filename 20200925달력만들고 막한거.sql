@@ -3,7 +3,7 @@ GROUP BY의 확장 : SUBGROUP을 자동으로 생성하여 하나의 결과로 �
 1. ROLLUP(col1, col2...)
    기술된 컬럼을 오른쪽에서 부터 지워 나가며 서브 그룹을 생성
    
-2. GROUPING SETS ( (col1, col2,), col3)
+2. GROUPING SETS ((col1, col2,), col3)
    콤마 단위로 기술된 서브 그룹을 생성
 
 3. CUBE(col1, col2...)
@@ -135,5 +135,22 @@ FROM dept_h
 START WITH deptcd = 'dept0'
 CONNECT BY PRIOR deptcd = p_deptcd;
 
+UPDATE emp_test SET sal = sal+200 WHERE sal < (SELECT AVG(sal)FROM emp_test);
+                                     
+
+SELECT *
+FROM emp_test
 
 
+
+DROP TABLE emp_test;
+
+CREATE TABLE emp_test AS
+SELECT *
+FROM emp;
+
+
+UPDATE emp_test SET sal = sal + 200 WHERE sal < (SELECT avg(sal) FROM emp_test WHERE deptno = emp_test.deptno);
+
+
+            
