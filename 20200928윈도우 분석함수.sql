@@ -201,15 +201,6 @@ WHERE a.rn = b.rn;
            FROM emp
            GROUP BY deptno) a
 WHERE emp.deptno = a.deptno 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  --실습 ana3
  SELECT empno, ename, sal,deptno, MAX(sal) OVER (PARTITION BY deptno)
  FROM emp
